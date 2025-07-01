@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build:script": "tsc -p tsconfig.script.json",
+    "find-whales": "npm run build:script && node dist/hyperliquid-api.js find-whales"
   },
   "dependencies": {
     "@nktkas/hyperliquid": "^0.22.1",

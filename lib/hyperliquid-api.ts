@@ -251,9 +251,63 @@ Wallet: ${wallet}`);
         console.log(`Total Value: ${(portfolio.totalValue as number).toLocaleString()}`);
         top.forEach((h: any, i: number) => console.log(`${i + 1}. ${h.coin} - ${(h.value as number).toLocaleString()}`));
     }
+
+    async findBigWhaleTrades(coin: string = 'HYPE', valueThreshold: number = 100000) {
+        console.log(`
+Analyzing known whales for trades > ${valueThreshold.toLocaleString()} in ${coin}...`);
+        const bigTradersInfo = [];
+
+        for (const whaleAddress of this.knownWhales) {
+            const userFills = await this.makeApiCall({ type: 'userFills', user: whaleAddress });
+            if (!userFills) continue;
+
+            const hypeFills = userFills.filter((f: any) => f.coin === coin);
+            const bigTrades = hypeFills.filter((f: any) => (parseFloat(f.sz) * parseFloat(f.px)) > valueThreshold);
+
+            if (bigTrades.length > 0) {
+                console.log(`
+✅ Found big trader: ${whaleAddress}`);
+                const portfolio = await this.getWalletPortfolio(whaleAddress);
+                if (portfolio && portfolio.totalValue > 0) {
+                    const top3 = this.getTop3Holdings(portfolio);
+                    const traderInfo = {
+                        wallet: whaleAddress,
+                        portfolioValue: portfolio.totalValue,
+                        top3Holdings: top3,
+                        bigHypeTrades: bigTrades.map(t => ({
+                            side: t.side,
+                            size: t.sz,
+                            price: t.px,
+                            value: parseFloat(t.sz) * parseFloat(t.px),
+                            time: new Date(t.time).toISOString(),
+                        }))
+                    };
+                    bigTradersInfo.push(traderInfo);
+
+                    console.log(`   Total Portfolio Value: ${portfolio.totalValue.toLocaleString()}`);
+                    console.log('   Top 3 Holdings:');
+                    top3.forEach((h: any) => {
+                        console.log(`     - ${h.coin}: ${h.value.toLocaleString()} (${h.percentage.toFixed(2)}%)`);
+                    });
+                    console.log('   Recent Large HYPE Trades:');
+                    traderInfo.bigHypeTrades.forEach(t => {
+                        console.log(`     - ${t.side.toUpperCase()} ${t.value.toLocaleString()} @ ${t.price}`);
+                    });
+
+                } else {
+                     console.log('   Could not retrieve portfolio information or portfolio is empty.');
+                }
+            }
+        }
+
+        if (bigTradersInfo.length === 0) {
+            console.log('\nNo known whales found with recent large HYPE trades.');
+        }
+        
+        return bigTradersInfo;
+    }
 }
 
-/*
 async function main() {
     const monitor = new EnhancedHypeTradeMonitor();
     await monitor.start();
@@ -264,12 +318,18 @@ async function analyze(walletAddress) {
     await monitor.analyzeWallet(walletAddress);
 }
 
-const __file = fileURLToPath(import.meta.url);
+async function findWhales() {
+    const monitor = new EnhancedHypeTradeMonitor();
+    await monitor.findBigWhaleTrades();
+}
+
+const __file = __filename;
 if (process.argv[1] === __file) {
     if (process.argv[2] === 'analyze' && process.argv[3]) {
         analyze(process.argv[3]);
+    } else if (process.argv[2] === 'find-whales') {
+        findWhales();
     } else {
         main();
     }
 }
-*/

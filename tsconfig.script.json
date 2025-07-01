@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": "dist",
+    "module": "commonjs"
+  },
+  "include": [
+    "lib/hyperliquid-api.ts"
+  ]
+}
