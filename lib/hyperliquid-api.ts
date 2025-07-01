@@ -308,6 +308,7 @@ Analyzing known whales for trades > ${valueThreshold.toLocaleString()} in ${coin
     }
 }
 
+/*
 async function main() {
     const monitor = new EnhancedHypeTradeMonitor();
     await monitor.start();
@@ -318,18 +319,12 @@ async function analyze(walletAddress) {
     await monitor.analyzeWallet(walletAddress);
 }
 
-async function findWhales() {
-    const monitor = new EnhancedHypeTradeMonitor();
-    await monitor.findBigWhaleTrades();
-}
-
-const __file = __filename;
+const __file = fileURLToPath(import.meta.url);
 if (process.argv[1] === __file) {
     if (process.argv[2] === 'analyze' && process.argv[3]) {
         analyze(process.argv[3]);
-    } else if (process.argv[2] === 'find-whales') {
-        findWhales();
     } else {
         main();
     }
 }
+*/

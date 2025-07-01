@@ -3,12 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "build:script": "tsc -p tsconfig.script.json",
-    "find-whales": "npm run build:script && node dist/hyperliquid-api.js find-whales"
+    "start": "NODE_ENV=production node server.js",
+    "lint": "next lint"
   },
   "dependencies": {
     "@nktkas/hyperliquid": "^0.22.1",
