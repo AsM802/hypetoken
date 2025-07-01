@@ -1,4 +1,4 @@
-'use client';
+"""'use client';
 
 import Link from 'next/link';
 import {
@@ -17,14 +17,44 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { motion } from 'framer-motion';
 
 export default function Home() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
+
   return (
     <main className="p-6 bg-white/5 backdrop-blur-md rounded-lg border border-white/10 shadow-lg">
       <div className="min-h-screen flex items-center justify-center px-4">
-        <div className="max-w-6xl w-full">
+        <motion.div
+          className="max-w-6xl w-full"
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+        >
           {/* Hero */}
-          <div className="text-center space-y-8 mb-16">
+          <motion.div
+            className="text-center space-y-8 mb-16"
+            variants={itemVariants}
+          >
             <Badge
               variant="secondary"
               className="bg-purple-500/20 border border-purple-500/30 text-purple-300 hover:bg-purple-500/30 backdrop-blur-sm"
@@ -33,13 +63,18 @@ export default function Home() {
               Real-time crypto intelligence
             </Badge>
 
-            <h1 className="text-6xl md:text-8xl font-black bg-gradient-to-r from-white via-purple-200 to-cyan-400 bg-clip-text text-transparent leading-tight">
+            <motion.h1
+              className="text-6xl md:text-8xl font-black bg-gradient-to-r from-white via-purple-200 to-cyan-400 bg-clip-text text-transparent leading-tight"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.7, ease: 'easeOut' }}
+            >
               HYPE
               <br />
               <span className="text-4xl md:text-6xl font-light">
                 Token Tracker
               </span>
-            </h1>
+            </motion.h1>
 
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
               Experience the future of crypto trading with AI-powered analytics,
@@ -63,10 +98,13 @@ export default function Home() {
                 Watch Demo
               </Button>
             </div>
-          </div>
+          </motion.div>
 
           {/* Features */}
-          <div className="grid md:grid-cols-3 gap-6 mb-16">
+          <motion.div
+            className="grid md:grid-cols-3 gap-6 mb-16"
+            variants={containerVariants}
+          >
             {[
               {
                 icon: <TrendingUp className="w-8 h-8" />,
@@ -86,33 +124,36 @@ export default function Home() {
                 description: 'Your assets protected by military-grade encryption',
               },
             ].map((feature, index) => (
-              <Card
-                key={index}
-                className="group relative bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-500 hover:scale-105 hover:border-purple-500/50"
-                style={{ transitionDelay: `${index * 200}ms` }}
-              >
-                <CardHeader>
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-xl text-white group-hover:scale-110 transition-transform">
-                      {feature.icon}
+              <motion.div key={index} variants={itemVariants}>
+                <Card
+                  className="group relative bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-500 hover:scale-105 hover:border-purple-500/50"
+                >
+                  <CardHeader>
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-xl text-white group-hover:scale-110 transition-transform">
+                        {feature.icon}
+                      </div>
+                      <CardTitle className="text-xl text-white">
+                        {feature.title}
+                      </CardTitle>
                     </div>
-                    <CardTitle className="text-xl text-white">
-                      {feature.title}
-                    </CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-400 leading-relaxed">
-                    {feature.description}
-                  </CardDescription>
-                </CardContent>
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 to-cyan-500/0 group-hover:from-purple-500/5 group-hover:to-cyan-500/5 rounded-lg transition-all duration-500" />
-              </Card>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-gray-400 leading-relaxed">
+                      {feature.description}
+                    </CardDescription>
+                  </CardContent>
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 to-cyan-500/0 group-hover:from-purple-500/5 group-hover:to-cyan-500/5 rounded-lg transition-all duration-500" />
+                </Card>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Stats */}
-          <div className="text-center space-y-8">
+          <motion.div
+            className="text-center space-y-8"
+            variants={itemVariants}
+          >
             <h2 className="text-3xl font-bold text-white">
               Trusted by thousands of traders
             </h2>
@@ -131,10 +172,13 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Footer CTA */}
-          <div className="text-center mt-16 pt-16 border-t border-white/10">
+          <motion.div
+            className="text-center mt-16 pt-16 border-t border-white/10"
+            variants={itemVariants}
+          >
             <p className="text-gray-400 mb-6">Ready to revolutionize your trading?</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/login">
@@ -151,9 +195,9 @@ export default function Home() {
                 </Button>
               </Link>
             </div>
-          </div>
-    </div>
-        </div>
+          </motion.div>
+        </motion.div>
+      </div>
     </main>
   );
-}
+}""
