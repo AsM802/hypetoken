@@ -1,0 +1,10 @@
+{
+  "/api/auth/login/route": "app/api/auth/login/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/trades/lives/route": "app/api/trades/lives/route.js",
+  "/api/whales/route": "app/api/whales/route.js",
+  "/page": "app/page.js",
+  "/register/page": "app/register/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/login/page": "app/login/page.js"
+}

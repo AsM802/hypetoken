@@ -1,0 +1,18 @@
+{
+  "css.validate": false,
+  "tailwindCSS.includeLanguages": {
+    "css": "css",
+    "postcss": "css"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "terminal.integrated.profiles.windows": {
+    "Ubuntu (WSL)": {
+      "path": "C:\\Windows\\System32\\wsl.exe",
+      "args": [],
+      "icon": "terminal-ubuntu"
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)"
+}
