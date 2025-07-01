@@ -13,11 +13,3 @@ export async function GET() {
     return NextResponse.json({ error: 'Failed to fetch whale trades' }, { status: 500 });
   }
 }
-    } else {
-      return NextResponse.json({ error: 'Invalid payload' }, { status: 400 });
-    }
-  } catch (error) {
-    console.error('Error saving whale trades:', error);
-    return NextResponse.json({ error: 'Failed to save whale trades' }, { status: 500 });
-  }
-}
