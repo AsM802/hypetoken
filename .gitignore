@@ -1,0 +1,5 @@
+# Ignore generated data files
+data/*.json
+
+# Ignore nested hypetoken directory (if it's a separate repo or build output)
+hypetoken/

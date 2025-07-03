@@ -1,0 +1,14 @@
+[
+  {
+    "address": "0x1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t",
+    "name": "Test Whale",
+    "portfolio": {
+      "HYPE": 1000000,
+      "ETH": 50
+    },
+    "tags": [
+      "test"
+    ],
+    "confidence": 95
+  }
+]

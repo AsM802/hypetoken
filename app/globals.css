@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', sans-serif;
+  }
+
+  body {
+    @apply bg-gradient-to-br from-indigo-600 to-purple-800 text-white;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-3xl mx-auto py-20 px-4 text-center;
+  }
+
+  .button {
+    @apply bg-white text-purple-700 font-bold py-2 px-6 rounded-md hover:bg-gray-100 transition;
+  }
+
+  .card {
+    @apply bg-white text-gray-800 rounded-xl shadow-md p-6 mt-8 text-left;
+  }
+}

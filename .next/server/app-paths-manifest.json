@@ -1,0 +1,5 @@
+{
+  "/api/trades/lives/route": "app/api/trades/lives/route.js",
+  "/api/whales/route": "app/api/whales/route.js",
+  "/dashboard/page": "app/dashboard/page.js"
+}
