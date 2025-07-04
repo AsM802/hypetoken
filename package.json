@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node server.js",
+    "dev": "node server.mjs",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
+    "start": "NODE_ENV=production node server.mjs",
     "lint": "next lint"
   },
   "dependencies": {
@@ -13,11 +13,13 @@
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-slot": "^1.2.3",
     "@types/ws": "^8.5.6",
+    "alchemy-sdk": "^3.6.1",
     "axios": "^1.10.0",
     "bcryptjs": "^3.0.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dotenv": "^16.6.0",
+    "ethers": "^6.15.0",
     "framer-motion": "^12.18.1",
     "hyperliquid": "^1.7.6",
     "jsonwebtoken": "^9.0.2",

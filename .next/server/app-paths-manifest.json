@@ -1,5 +1,17 @@
 {
-  "/api/trades/lives/route": "app/api/trades/lives/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/auth/login/route": "app/api/auth/login/route.js",
+  "/api/auth/register/route": "app/api/auth/register/route.js",
+  "/api/ping/route": "app/api/ping/route.js",
+  "/api/blockchain-events/route": "app/api/blockchain-events/route.js",
+  "/api/hype/route": "app/api/hype/route.js",
+  "/api/trades/seed/route": "app/api/trades/seed/route.js",
+  "/api/ws/route": "app/api/ws/route.js",
   "/api/whales/route": "app/api/whales/route.js",
-  "/dashboard/page": "app/dashboard/page.js"
+  "/api/trades/route": "app/api/trades/route.js",
+  "/api/trades/lives/route": "app/api/trades/lives/route.js",
+  "/register/page": "app/register/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/page": "app/page.js",
+  "/login/page": "app/login/page.js"
 }

@@ -1,0 +1,17 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/api/auth/login/route": "/api/auth/login",
+  "/api/auth/register/route": "/api/auth/register",
+  "/api/ping/route": "/api/ping",
+  "/api/blockchain-events/route": "/api/blockchain-events",
+  "/api/hype/route": "/api/hype",
+  "/api/trades/seed/route": "/api/trades/seed",
+  "/api/ws/route": "/api/ws",
+  "/api/whales/route": "/api/whales",
+  "/api/trades/route": "/api/trades",
+  "/api/trades/lives/route": "/api/trades/lives",
+  "/register/page": "/register",
+  "/dashboard/page": "/dashboard",
+  "/page": "/",
+  "/login/page": "/login"
+}

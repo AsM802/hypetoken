@@ -102,7 +102,7 @@ export default function LoginPage() {
                 className="text-white/70 hover:text-white"
                 onClick={() => router.push('/register')}
               >
-                Don't have an account? Register
+                Don&apos;t have an account? Register
               </Button>
             </div>
           </CardContent>
